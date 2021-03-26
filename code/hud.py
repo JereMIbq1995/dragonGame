@@ -21,8 +21,8 @@ class HUD():
             for line in warriorTypesFile:
                 locationX = self._windowWidth / 2 - size * self._blockWidth / 2 + i * self._blockWidth
                 locationY = self._windowHight * 0.05
-                self._types.append(arcade.Sprite(filename = f"images/{line.strip()}/0.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize,center_x = locationX,center_y = locationY))
-                self._mouseSprite.textures.append(arcade.load_texture(f"images/{line.strip()}/0.png"))
+                self._types.append(arcade.Sprite(filename = f"images/warriors/{line.strip()}/0.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize,center_x = locationX,center_y = locationY))
+                self._mouseSprite.textures.append(arcade.load_texture(f"images/warriors/{line.strip()}/0.png"))
                 i+=1
 
     def update(self,mouseX,mouseY,pressed):
@@ -30,8 +30,8 @@ class HUD():
         self._mouseSprite.center_y = mouseY
         i = 1
         moving = False
-        for sprite in self._types():
-            if sprite.collides_with_point(mouseX,mouseY) and pressed:
+        for sprite in self._types:
+            if sprite.collides_with_point((mouseX,mouseY)) and pressed:
                 self._mouseSprite.set_texture(i)
                 moving = True
             i += 1

@@ -49,7 +49,7 @@ class DragonGame:
 
     def update(self):
         self._stage.getAllSprites().update()
-        self._hud.update(self._mouseX, self._mouseY, self._mousePress, not self._mousePress)
+        self._hud.update(self._mouseX, self._mouseY, self._mousePress)
 
     def draw(self):
         self._stage.getAllSprites().draw()
