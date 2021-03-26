@@ -16,14 +16,14 @@ class ArcadeBridge(arcade.Window):
     def on_key_release(self):
         pass
 
-    def on_mouse_press(self):
-        pass
+    def on_mouse_motion(self, x, y, dx, dy):
+        self._dragonGame.handleMouseMotion(x, y, dx, dy)
+    
+    def on_mouse_press(self, x: float, y: float, button: int, modifiers: int):
+        self._dragonGame.handleMousePress(x, y, button, modifiers)
 
-    def on_mouse_move(self):
-        pass
-
-    def on_mouse_release(self):
-        pass
+    def on_mouse_release(self, x: float, y: float, button: int, modifiers: int):
+        self._dragonGame.handleMouseRelease(x, y, button, modifiers)
 
     def on_update(self, delta_time):
         self._dragonGame.update()
