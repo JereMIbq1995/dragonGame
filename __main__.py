@@ -1,7 +1,7 @@
 import arcade
 
-from code.dragonGame import DragonGame
+from code.arcadeBridge import ArcadeBridge
 
-dragonGame = DragonGame()
+arcadeBridge = ArcadeBridge()
 
 arcade.run()

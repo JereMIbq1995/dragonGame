@@ -1,17 +1,56 @@
 import arcade
+import json
+from code import constants
+from code.tile import Tile
+from code.stage import Stage
+# from code.attacker import Warrior, Dragon
+from code.hud import HUD
 
-class DragonGame(arcade.Window):
-
+class DragonGame:
     def __init__(self):
-        self.SCREEN_WIDTH = 800
-        self.SCREEN_HEIGHT = 600
-        self.SCREEN_TITLE = "Dragon Game"
+        self._hud = HUD(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT)
+        self._warriorSelected = False
+        self._selectedWarrior = None
+        self._stage = Stage("stages/stage1.json")
 
-        super().__init__(self.SCREEN_WIDTH, self.SCREEN_HEIGHT, self.SCREEN_TITLE)
+        self._mouseX = 0
+        self._mouseY = 0
+        self._mousePress = False
+    
+    def handleMouseMotion(self, mouse_x, mouse_y, dx, dy):
+        for tile in self._stage.getTiles():
+            if tile.collides_with_point((mouse_x, mouse_y)):
+                tile.highlightedMode()
+            if not tile.collides_with_point((mouse_x, mouse_y)):
+                tile.normalMode()
+        
+        if (self._warriorSelected):
+            self._selectedWarrior.center_x = mouse_x
+            self._selectedWarrior.center_y = mouse_y
+        
+        self._mouseX = mouse_x
+        self._mouseY = mouse_y
+    
+    def handleMousePress(self, mouse_x, mouse_y, button, modifiers):
+        # if (not self._warriorSelected):
+        #     for warrior in self._stage.getWarriors():
+        #         if warrior.collides_with_point((mouse_x, mouse_y)):
+        #             self._warriorSelected = True
+        #             self._selectedWarrior = warrior
+        #             break
+        # else:
+        #     self._warriorSelected = False
+        #     self._selectedWarrior = None
+        self._mousePress = True
+        
 
-        arcade.set_background_color(arcade.color.WHITE)
+    def handleMouseRelease(self, mouse_x, mouse_y, button, modifiers):
+        self._mousePress = False
 
-    def on_draw(self):
-        arcade.start_render()
+    def update(self):
+        self._stage.getAllSprites().update()
+        self._hud.update(self._mouseX, self._mouseY, self._mousePress)
 
-        # Draw stuff here
+    def draw(self):
+        self._stage.getAllSprites().draw()
+        self._hud.draw()
