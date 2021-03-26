@@ -9,7 +9,7 @@ class HUD():
         self._windowWidth = windowWidth
         self._windowHight = windowHight
         self._blockWidth = self._windowWidth / 20
-        self._mouseSprite = arcade.sprite("images/blankTexture.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize)
+        self._mouseSprite = arcade.Sprite("images/blankTexture.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize)
 
         with open("resources/warriorTypes.txt","r") as warriorTypesFile:
             size = 0
@@ -21,22 +21,21 @@ class HUD():
             for line in warriorTypesFile:
                 locationX = self._windowWidth / 2 - size * self._blockWidth / 2 + i * self._blockWidth
                 locationY = self._windowHight * 0.05
-                self.og.append(f"x:{locationX} y:{locationY} width:{self._blockWidth}")
                 self._types.append(arcade.Sprite(filename = f"images/{line.strip()}/0.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize,center_x = locationX,center_y = locationY))
-                self._mouseSprite.textures.append[arcade.load_texture(f"images/{line.strip()}/0.png")]
+                self._mouseSprite.textures.append(arcade.load_texture(f"images/{line.strip()}/0.png"))
                 i+=1
 
-    def update(self,mouseX,mouseY,pressed,released):
+    def update(self,mouseX,mouseY,pressed):
         self._mouseSprite.center_x = mouseX
         self._mouseSprite.center_y = mouseY
         i = 1
-        pressed = False
+        moving = False
         for sprite in self._types():
-            if sprite.collides_with_point(mouseX,mouseY) and pressed == True:
+            if sprite.collides_with_point(mouseX,mouseY) and pressed:
                 self._mouseSprite.set_texture(i)
-                pressed = True
+                moving = True
             i += 1
-            if released and pressed == True:
+            if not pressed and moving:
                 self._mouseSprite.set_texture(0)
                 return(i)
         return(0)
