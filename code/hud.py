@@ -3,9 +3,6 @@ from code.warrior import Warrior
 
 class HUD():
     def __init__(self,windowWidth,windowHight,warriorTypes):
-        self._score = 0
-        self._health = 100
-
         self._spriteSize = 50
         self._windowWidth = windowWidth
         self._windowHight = windowHight
@@ -22,7 +19,7 @@ class HUD():
         i = 0
         for sprite in self._types:
             if sprite.collides_with_point((mouseX,mouseY)):
-                warrior = Warrior(self._warriorTypes[i])
+                warrior = Warrior(self._warriorTypes[i],True,1)
                 self._types.pop(i)
                 self._warriorTypes.pop(i)
                 return warrior
@@ -33,9 +30,10 @@ class HUD():
         self._types.append(arcade.Sprite(filename = f"images/warriors/{warriorId}/0.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize))
         self._warriorTypes.append(warriorId)
 
-    def draw(self):
+    def draw(self,health):
         for i in range(len(self._types)):
             self._types[i].center_x = self._windowWidth / 2 - size * self._blockWidth / 2 + i * self._blockWidth
             self._types[i].center_y = self._windowHight * 0.05
             arcade.draw_rectangle_outline(self._types[i].center_x,self._types[i].center_y,self._blockWidth,self._blockWidth,(0,0,0),2)
         self._types.draw()
+        arcade.draw_text(f"Health: {health}",0,0,(0,0,0),30)
