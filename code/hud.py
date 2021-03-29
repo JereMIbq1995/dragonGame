@@ -1,47 +1,39 @@
 import arcade
+from code.warrior import Warrior
 
 class HUD():
-    def __init__(self,windowWidth,windowHight):
-        self._score = 0
-        self._health = 100
-
-        self._spriteSize = 10
+    def __init__(self,windowWidth,windowHight,warriorTypes):
+        self._spriteSize = 50
         self._windowWidth = windowWidth
         self._windowHight = windowHight
         self._blockWidth = self._windowWidth / 20
-        self._mouseSprite = arcade.Sprite("images/blankTexture.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize)
 
-        with open("resources/warriorTypes.txt","r") as warriorTypesFile:
-            size = 0
-            for line in warriorTypesFile:
-                size += 1
-        with open("resources/warriorTypes.txt","r") as warriorTypesFile:
-            self._types = arcade.SpriteList()
-            i = 0
-            for line in warriorTypesFile:
-                locationX = self._windowWidth / 2 - size * self._blockWidth / 2 + i * self._blockWidth
-                locationY = self._windowHight * 0.05
-                self._types.append(arcade.Sprite(filename = f"images/warriors/{line.strip()}/0.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize,center_x = locationX,center_y = locationY))
-                self._mouseSprite.textures.append(arcade.load_texture(f"images/warriors/{line.strip()}/0.png"))
-                i+=1
+        self._warriorTypes = warriorTypes
 
-    def update(self,mouseX,mouseY,pressed):
-        self._mouseSprite.center_x = mouseX
-        self._mouseSprite.center_y = mouseY
-        i = 1
-        moving = False
+        self._types = arcade.SpriteList()
+
+        for warriorId in self._warriorTypes:
+            self._types.append(arcade.Sprite(filename = f"images/warriors/{warriorId}/0.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize))
+
+    def getWarrior(self,mouseX,mouseY):
+        i = 0
         for sprite in self._types:
-            if sprite.collides_with_point((mouseX,mouseY)) and pressed:
-                self._mouseSprite.set_texture(i)
-                moving = True
+            if sprite.collides_with_point((mouseX,mouseY)):
+                warrior = Warrior(self._warriorTypes[i],True,1)
+                self._types.pop(i)
+                self._warriorTypes.pop(i)
+                return warrior
             i += 1
-            if not pressed and moving:
-                self._mouseSprite.set_texture(0)
-                return(i)
-        return(0)
+        return(None)
 
+    def putWarriorInHUD(warriorId):
+        self._types.append(arcade.Sprite(filename = f"images/warriors/{warriorId}/0.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize))
+        self._warriorTypes.append(warriorId)
 
-    def draw(self):
+    def draw(self,health):
         for i in range(len(self._types)):
+            self._types[i].center_x = self._windowWidth / 2 - size * self._blockWidth / 2 + i * self._blockWidth
+            self._types[i].center_y = self._windowHight * 0.05
             arcade.draw_rectangle_outline(self._types[i].center_x,self._types[i].center_y,self._blockWidth,self._blockWidth,(0,0,0),2)
         self._types.draw()
+        arcade.draw_text(f"Health: {health}",0,0,(0,0,0),30)
