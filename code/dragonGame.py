@@ -18,8 +18,11 @@ class DragonGame:
         self._eventHandler.handleStickingWarriorToMouse(mouse_x, mouse_y)
     
     def handleMousePress(self, mouse_x, mouse_y, button, modifiers):
-        self._eventHandler.handleWarriorSelection(self._hud, mouse_x, mouse_y, self._stage)
-        self._eventHandler.handleWarriorPlacement(self._stage.getTileSprites(), self._hud, mouse_x, mouse_y)
+        selectingMode = self._eventHandler.getSelectingMode()
+        if (selectingMode):
+            self._eventHandler.handleWarriorSelection(self._hud, mouse_x, mouse_y, self._stage)
+        else:
+            self._eventHandler.handleWarriorPlacement(self._stage.getTileSprites(), self._hud, mouse_x, mouse_y)
 
     def handleMouseRelease(self, mouse_x, mouse_y, button, modifiers):
         self._mousePress = False
@@ -29,4 +32,5 @@ class DragonGame:
 
     def draw(self):
         self._stage.getAllSprites().draw()
+        self._stage.getWarriorSprites().draw()
         self._hud.draw(self._stage.getCastleHealth())
