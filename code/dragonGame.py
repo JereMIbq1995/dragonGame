@@ -19,7 +19,7 @@ class DragonGame:
     
     def handleMousePress(self, mouse_x, mouse_y, button, modifiers):
         self._eventHandler.handleWarriorSelection(self._hud, mouse_x, mouse_y, self._stage)
-        self._eventHandler.handleWarriorPlacement(self._stage.getTiles(), self._hud, mouse_x, mouse_y)
+        self._eventHandler.handleWarriorPlacement(self._stage.getTileSprites(), self._hud, mouse_x, mouse_y)
 
     def handleMouseRelease(self, mouse_x, mouse_y, button, modifiers):
         self._mousePress = False
