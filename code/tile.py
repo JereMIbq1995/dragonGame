@@ -1,6 +1,6 @@
 import arcade
 class Tile(arcade.Sprite):
-    def __init__(self, typeId, scaling = 1.0):
+    def __init__(self, typeId, scaling = 0.5):
         self._occupied = False
         self._warriorOccupied = ""
         super().__init__(f"images/tiles/{typeId}.png", scaling)

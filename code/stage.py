@@ -50,7 +50,7 @@ class Stage:
         dragon.remove_from_sprite_lists()
 
     def getCastleHealth(self):
-        return self._stageData.castleHealth
+        return self._stageData["castleHealth"]
     
     def _setUp(self):
         self._setUpTiles(100, constants.SCREEN_HEIGHT - 100)
@@ -58,10 +58,10 @@ class Stage:
         self._setUpDragons()
 
     def _setUpDragons(self):
-        self._dragonTypes = self._stageData.enemyList
+        self._dragonTypes = self._stageData["enemyList"]
     
     def _setUpWarriors(self):
-        self._warriorTypes = self._stageData.warriors
+        self._warriorTypes = self._stageData["warriors"]
 
     def _setUpTiles(self, init_x, init_y):
         next_x = init_x

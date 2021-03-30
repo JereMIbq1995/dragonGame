@@ -32,7 +32,7 @@ class HUD():
 
     def draw(self,health):
         for i in range(len(self._types)):
-            self._types[i].center_x = self._windowWidth / 2 - size * self._blockWidth / 2 + i * self._blockWidth
+            self._types[i].center_x = self._windowWidth / 2 - self._blockWidth / 2 + i * self._blockWidth
             self._types[i].center_y = self._windowHight * 0.05
             arcade.draw_rectangle_outline(self._types[i].center_x,self._types[i].center_y,self._blockWidth,self._blockWidth,(0,0,0),2)
         self._types.draw()
