@@ -1,9 +1,10 @@
 import arcade
 class Tile(arcade.Sprite):
-    def __init__(self, imagePath = "images/tiles/normalTile.png", scaling = 1.0):
+    def __init__(self, typeId, scaling = 1.0):
         self._occupied = False
         self._warriorOccupied = ""
-        super().__init__(imagePath, scaling)
+        super().__init__(f"images/tiles/{typeId}.png", scaling)
+        super().append_texture(arcade.load_texture(f"images/tiles/{typeId}_h.png"))
 
     def getOccupied(self):
         return self._occupied
