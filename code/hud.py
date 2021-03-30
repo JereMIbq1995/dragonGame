@@ -3,7 +3,7 @@ from code.warrior import Warrior
 
 class HUD():
     def __init__(self,windowWidth,windowHight,warriorTypes):
-        self._spriteSize = 50
+        self._spriteSize = 150
         self._windowWidth = windowWidth
         self._windowHight = windowHight
         self._blockWidth = self._windowWidth / 20
