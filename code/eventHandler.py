@@ -10,7 +10,7 @@ class EventHandler:
     def handleWarriorPlacement(self, tiles, hud, mouse_x, mouse_y):
         if (not self._warriorSelected == None):
             for tile in tiles:
-                if tile.collides_with_point((mouse_x, mouse_y)):
+                if tile.collides_with_point((mouse_x, mouse_y)) and not tile.getOccupied():
                     self._warriorSelected.center_x = mouse_x
                     self._warriorSelected.center_y = mouse_y
                     tile.setOccupied(True)
@@ -18,8 +18,12 @@ class EventHandler:
             self._warriorSelected = None
                 
 
-    def handleHighlightingSprites(self):
-        pass
+    def handleHighlightingSprites(self, allSprites, mouse_x, mouse_y):
+        for sprite in allSprites:
+            if sprite.collides_with_point((mouse_x, mouse_y)):
+                sprite.highlightedMode()
+            else:
+                sprite.normalMode()
 
     def handleStickingWarriorToMouse(self, mouse_x, mouse_y):
         if (not self._warriorSelected == None):
