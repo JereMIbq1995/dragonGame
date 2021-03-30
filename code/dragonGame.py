@@ -12,7 +12,7 @@ class DragonGame:
         self._stage = Stage("stages/stage1.json")
         self._hud = HUD(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, self._stage.getWarriorTypes())
         self._eventHandler = EventHandler()
-    
+
     def handleMouseMotion(self, mouse_x, mouse_y, dx, dy):
         self._eventHandler.handleHighlightingSprites(self._stage.getTiles(), mouse_x, mouse_y)
         self._eventHandler.handleStickingWarriorToMouse(mouse_x, mouse_y)
