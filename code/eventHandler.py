@@ -1,4 +1,4 @@
-from code.warrior import Warrior
+from code.attacker import Warrior
 class EventHandler:
     def __init__(self):
         self._warriorSelected = None
