@@ -1,11 +1,12 @@
+import arcade
 class Attacker(arcade.Sprite):
-    def __init__(self), path, scaling:
+    def __init__(self, path, scaling):
         self._health = 0.0
         self._atk = 0.0
         self._attackRange = 0.0
         self._isAlive = bool
 
-        super().__init__(f"images/tiles/{typeId}.png", scaling)
+        super().__init__(path, scaling)
 
 #Damage function takes health and applies the damage to it
     def takeDamage(damage):
@@ -15,49 +16,48 @@ class Attacker(arcade.Sprite):
     def attack():
         pass
 
-    def get_health(self):
+    def getHealth(self):
         return self._health
 
-    def set_health(self, health):
+    def setHealth(self, health):
         self._health = health
 
 
-    def get_atk(self):
+    def getAtk(self):
         return self._atk
 
-    def set_atk(self, atk):
+    def setAtk(self, atk):
         self._atk = atk
 
 
-    def get_attackRange(self):
+    def getAttackRange(self):
         return self._attackRange
 
-    def set_attackRange(self, attackRange):
+    def setAttackRange(self, attackRange):
         self.attackRange = attackRange
 
 
 class Warrior(Attacker):
     def __init__(self, typeId, beingSelected, scaling):
-        self._warriorTypeId = int 
-        self._beingSelected= bool
-        self._PlacedOnBoard= bool
+        self._warriorTypeId = typeId
+        self._beingSelected = beingSelected
+        self._placedOnBoard = False
         super().__init__(f"images/tiles/warriors/{typeId}.png", scaling)
 
-    def get_warriorTypeId(self):
+    def getWarriorTypeId(self):
         return self._warriorTypeId 
 
-    def set_warriorTypeId(self, typeId):
+    def setWarriorTypeId(self, typeId):
         self._warriorTypeId = typeId
 
-    def get_beingSelected(self):
+    def getBeingSelected(self):
         return self._beingSelected 
 
-    def set_beingSelected(self, beingSelected):
+    def setBeingSelected(self, beingSelected):
         self._beingSelected = beingSelected
 
-    def get_PlacedOnBoard(self):
-        return self._PlacedOnBoard
+    def getPlacedOnBoard(self):
+        return self._placedOnBoard
     
-    def set_PlacedOnBoard(self, PlacedOnBoard):
-        self._PlacedOnBoard = PlacedOnBoard
-
+    def setPlacedOnBoard(self, placedOnBoard):
+        self._placedOnBoard = placedOnBoard
