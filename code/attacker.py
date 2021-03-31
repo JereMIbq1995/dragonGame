@@ -42,7 +42,7 @@ class Warrior(Attacker):
         self._warriorTypeId = typeId
         self._beingSelected = beingSelected
         self._placedOnBoard = False
-        super().__init__(f"images/tiles/warriors/{typeId}.png", scaling)
+        super().__init__(f"images/warriors/{typeId}/0.png", scaling)
 
     def getWarriorTypeId(self):
         return self._warriorTypeId 
