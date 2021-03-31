@@ -1,9 +1,9 @@
 import arcade
-from code.warrior import Warrior
+from code.attacker import Warrior
 
 class HUD():
     def __init__(self,windowWidth,windowHight,warriorTypes):
-        self._spriteSize = 150
+        self._spriteSize = 50
         self._windowWidth = windowWidth
         self._windowHight = windowHight
         self._blockWidth = self._windowWidth / 20
@@ -19,7 +19,7 @@ class HUD():
         i = 0
         for sprite in self._types:
             if sprite.collides_with_point((mouseX,mouseY)):
-                warrior = Warrior(self._warriorTypes[i],True,1)
+                warrior = Warrior(self._warriorTypes[i],True,self._blockWidth / self._spriteSize)
                 self._types.pop(i)
                 self._warriorTypes.pop(i)
                 return warrior
