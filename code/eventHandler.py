@@ -24,6 +24,7 @@ class EventHandler:
                     warriorSet = True
                     break
             if (not warriorSet):
+                hud.putWarriorInHUD(self._warriorSelected.getWarriorTypeId())
                 self._warriorSelected.remove_from_sprite_lists()
             self._warriorSelected = None
             self._selectingMode = True
@@ -37,7 +38,6 @@ class EventHandler:
                 sprite.normalMode()
 
     def handleStickingWarriorToMouse(self, mouse_x, mouse_y):
-        print(self._warriorSelected)
         if (not self._warriorSelected == None):
             self._warriorSelected.center_x = mouse_x
             self._warriorSelected.center_y = mouse_y

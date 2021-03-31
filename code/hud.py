@@ -3,7 +3,7 @@ from code.attacker import Warrior
 
 class HUD():
     def __init__(self,windowWidth,windowHight,warriorTypes):
-        self._spriteSize = 50
+        self._spriteSize = 174
         self._windowWidth = windowWidth
         self._windowHight = windowHight
         self._blockWidth = self._windowWidth / 20
@@ -26,7 +26,7 @@ class HUD():
             i += 1
         return(None)
 
-    def putWarriorInHUD(warriorId):
+    def putWarriorInHUD(self, warriorId):
         self._types.append(arcade.Sprite(filename = f"images/warriors/{warriorId}/0.png",scale = self._blockWidth / self._spriteSize,image_width = self._spriteSize,image_height = self._spriteSize))
         self._warriorTypes.append(warriorId)
 
