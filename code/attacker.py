@@ -12,7 +12,6 @@ class Attacker(arcade.Sprite):
     def takeDamage(damage):
         self._health = self._health - damage
     
-
     def attack():
         pass
 

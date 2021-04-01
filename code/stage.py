@@ -68,7 +68,7 @@ class Stage:
         next_y = init_y
         index = 0
         for tileNum in self._stageData["boardArray"]:
-            tile = Tile(tileNum)
+            tile = Tile(tileNum,scaling = constants.SCREEN_WIDTH / 20 / 120)
 
             tile.center_x = next_x
             tile.center_y = next_y
