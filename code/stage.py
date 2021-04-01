@@ -2,7 +2,7 @@ import arcade
 import json
 from code import constants
 from code.tile import Tile
-from code.warrior import Warrior
+from code.attacker import Warrior
 
 class Stage:
     def __init__(self, jsonPath):
