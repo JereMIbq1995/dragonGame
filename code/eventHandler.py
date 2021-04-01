@@ -1,5 +1,4 @@
 from code.attacker import Warrior
-from code.stage import Stage
 import math
 class EventHandler:
     def __init__(self):
@@ -57,7 +56,7 @@ class EventHandler:
             if projectile != None:
                 stage.addProjectile(projectile)
 
-    def checkForDamageToDragons(self, stage):
+    def handleDamageToDragons(self, stage):
         for projectile in stage.getProjectileSprites():
             for dragon in stage.getProjectileSprites():
                 if projectile.collides_with(dragon):
