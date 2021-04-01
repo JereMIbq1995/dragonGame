@@ -1,4 +1,5 @@
 from code.attacker import Warrior
+import math
 class EventHandler:
     def __init__(self):
         self._warriorSelected = None
@@ -44,3 +45,21 @@ class EventHandler:
     
     def getSelectingMode(self):
         return self._selectingMode
+
+    def handleWarriorAttack(self, stage):
+        for warrior in stage.getWarriorSprites():
+            attackList = []
+            for dragon in stage.getDragonSprites():
+                if math.sqrt(abs(warrior.center_x - dragon.center_x) * abs(warrior.center_x - dragon.center_x) + abs(warrior.center_y - dragon.center_y) * abs(warrior.center_y - dragon.center_y)) < warrior.get_attackRange():
+                    attackList.append(dragon)
+            projectile = warrior.attack(attackList)
+            if projectile != None:
+                stage.addProjectile(projectile)
+
+    def handleDamageToDragons(self, stage):
+        for projectile in stage.getProjectileSprites():
+            for dragon in stage.getProjectileSprites():
+                if projectile.collides_with(dragon):
+                    dragon.takeDamage(1)
+                    stage.removeProjectile(projectile)
+                    pass
