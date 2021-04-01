@@ -11,5 +11,67 @@
                    0, 2, 2, 0, 0, 2, 2, 2, 0,
                    0, 2, 2, 2, 2, 2, 2, 0, 0,
                    0, 2, 2, 2, 0, 0, 3, 0, 0],
-    "enemyList": [1,1,1,2,1,1,2,1,2,2,2,3,1,2,3]
+    "dragonsList": [
+        {
+            "type": 1,
+            "timeSpawn": 3
+        }
+        ,
+        { 
+            "type": 1,
+            "timeSpawn": 3.2
+        },
+        {
+            "type:": 1,
+            "timeSpawn": 7
+        },
+        { 
+            "type": 2,
+            "timeSpawn": 7.5
+        },
+        {
+            "type": 1,
+            "timeSpawn": 11
+        },
+        {
+            "type": 1,
+            "timeSpawn": 12.5
+        },
+        {
+            "type": 2,
+            "timeSpawn": 14
+        },
+        {
+            "type": 1,
+            "timeSpawn": 16
+        },
+        {
+            "type": 2,
+            "timeSpawn": 18
+        },
+        {
+            "type": 2,
+            "timeSpawn": 22
+        },
+        {
+            "type": 2,
+            "timeSpawn": 24
+        },
+        {
+            "type": 3,
+            "timeSpawn": 25
+        },
+        {
+            "type": 1,
+            "timeSpawn": 26
+        },
+        {
+            "type": 2,
+            "timeSpawn": 26.5
+        },
+        {
+            "type": 3,
+            "timeSpawn": 27
+        }
+    ]
 }
