@@ -3,10 +3,12 @@ import json
 from code import constants
 from code.tile import Tile
 from code.warrior import Warrior
+from code.dragonSpawner import DragonSpawner
 
 class Stage:
     def __init__(self, jsonPath):
         self._jsonPath = jsonPath
+        self._stageData = json.load(open(jsonPath))
 
         self._tiles = arcade.SpriteList()
         self._enemies = arcade.SpriteList()
@@ -14,9 +16,7 @@ class Stage:
         self._allSprites = arcade.SpriteList()
 
         self._warriorTypes = []
-        self._dragonTypes = []
-
-        self._stageData = json.load(open(jsonPath))
+        self._dragonsList = []
 
         self._setUp()
     
@@ -56,9 +56,14 @@ class Stage:
         self._setUpTiles(100, constants.SCREEN_HEIGHT - 100)
         self._setUpWarriors()
         self._setUpDragons()
+        spawnLocation = (self._tiles[self._stageData["lairIndex"]].center_x, self._tiles[self._stageData["lairIndex"]].center_y)
+        self._dragonSpawner = DragonSpawner(self._dragonsList, self, spawnLocation)
+
+    def startSpawningDragon(self):
+        self._dragonSpawner.startSpawning()
 
     def _setUpDragons(self):
-        self._dragonTypes = self._stageData["enemyList"]
+        self._dragonsList = self._stageData["dragonsList"]
     
     def _setUpWarriors(self):
         self._warriorTypes = self._stageData["warriors"]
