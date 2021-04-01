@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 from code.attacker import Warrior
-=======
-from code.warrior import Warrior
 from code.stage import Stage
 import math
->>>>>>> 50cd29b (YOLO)
 class EventHandler:
     def __init__(self):
         self._warriorSelected = None
@@ -57,4 +53,14 @@ class EventHandler:
             for dragon in stage.getDragonSprites():
                 if math.sqrt(abs(warrior.center_x - dragon.center_x) * abs(warrior.center_x - dragon.center_x) + abs(warrior.center_y - dragon.center_y) * abs(warrior.center_y - dragon.center_y)) < warrior.get_attackRange():
                     attackList.append(dragon)
-            warrior.attack(attackList)
+            projectile = warrior.attack(attackList)
+            if projectile != None:
+                stage.addProjectile(projectile)
+
+    def checkForDamageToDragons(self, stage):
+        for projectile in stage.getProjectileSprites():
+            for dragon in stage.getProjectileSprites():
+                if projectile.collides_with(dragon):
+                    dragon.takeDamage(1)
+                    stage.removeProjectile(projectile)
+                    pass
