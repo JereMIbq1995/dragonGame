@@ -2,7 +2,7 @@ import arcade
 import json
 from code import constants
 from code.tile import Tile
-from code.warrior import Warrior
+from code.attacker import Warrior
 from code.dragonSpawner import DragonSpawner
 
 class Stage:
@@ -13,6 +13,7 @@ class Stage:
         self._tiles = arcade.SpriteList()
         self._enemies = arcade.SpriteList()
         self._warriors = arcade.SpriteList()
+        self._projectiles = arcade.SpriteList()
         self._allSprites = arcade.SpriteList()
 
         self._warriorTypes = []
@@ -28,6 +29,9 @@ class Stage:
     
     def getWarriorSprites(self):
         return self._warriors
+
+    def getProjectileSprites(self):
+        return self._projectiles
     
     def getAllSprites(self):
         return self._allSprites
@@ -48,6 +52,13 @@ class Stage:
 
     def removeDragon(self,dragon):
         dragon.remove_from_sprite_lists()
+
+    def addProjectile(self, projectile):
+        self._projectiles.append(projectile)
+        self._allSprites.append(projectile)
+
+    def removeProjectile(self, projectile):
+        projectile.remove_from_sprite_lists()
 
     def getCastleHealth(self):
         return self._stageData["castleHealth"]
@@ -73,7 +84,7 @@ class Stage:
         next_y = init_y
         index = 0
         for tileNum in self._stageData["boardArray"]:
-            tile = Tile(tileNum)
+            tile = Tile(tileNum,scaling = constants.SCREEN_WIDTH / 20 / 120)
 
             tile.center_x = next_x
             tile.center_y = next_y

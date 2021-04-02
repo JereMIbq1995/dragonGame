@@ -12,7 +12,6 @@ class Attacker(arcade.Sprite):
     def takeDamage(damage):
         self._health = self._health - damage
     
-
     def attack():
         pass
 
@@ -61,3 +60,18 @@ class Warrior(Attacker):
     
     def setPlacedOnBoard(self, placedOnBoard):
         self._placedOnBoard = placedOnBoard
+
+"""
+    Test dragon class for the Dragon Spawner
+    (More functions and attributes need to be added to complete this class)
+"""
+class Dragon(Attacker):
+    def __init__(self, typeId, scaling):
+        self._dragonTypeId = typeId
+        super().__init__(f"images/dragons/{typeId}/0.png", scaling)
+
+    def getDragonTypeId(self):
+        return self._dragonTypeId
+
+    def setDragonTypeId(self, typeId):
+        self._dragonTypeId = typeId
