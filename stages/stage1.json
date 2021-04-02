@@ -9,69 +9,27 @@
                    0, 0, 2, 2, 2, 2, 2, 2, 0,
                    0, 0, 2, 0, 0, 0, 0, 2, 0,
                    0, 2, 2, 0, 0, 2, 2, 2, 0,
-                   0, 2, 2, 2, 2, 2, 2, 0, 0,
+                   0, 2, 0, 2, 2, 2, 2, 0, 0,
                    0, 2, 2, 2, 0, 0, 3, 0, 0],
+    "paths": [
+                [16, 15, 14, 13, 12 , 11, 20, 29, 28, 37, 46, 47, 48, 39, 40, 41, 32, 33, 42, 51],
+                [16, 25, 34, 33, 42, 51]
+            ],
     "dragonsList": [
-        {
-            "type": 1,
-            "timeSpawn": 3
-        }
-        ,
-        { 
-            "type": 1,
-            "timeSpawn": 3.2
-        },
-        {
-            "type": 1,
-            "timeSpawn": 7
-        },
-        { 
-            "type": 2,
-            "timeSpawn": 7.5
-        },
-        {
-            "type": 1,
-            "timeSpawn": 11
-        },
-        {
-            "type": 1,
-            "timeSpawn": 12.5
-        },
-        {
-            "type": 2,
-            "timeSpawn": 14
-        },
-        {
-            "type": 1,
-            "timeSpawn": 16
-        },
-        {
-            "type": 2,
-            "timeSpawn": 18
-        },
-        {
-            "type": 2,
-            "timeSpawn": 22
-        },
-        {
-            "type": 2,
-            "timeSpawn": 24
-        },
-        {
-            "type": 3,
-            "timeSpawn": 25
-        },
-        {
-            "type": 1,
-            "timeSpawn": 26
-        },
-        {
-            "type": 2,
-            "timeSpawn": 26.5
-        },
-        {
-            "type": 3,
-            "timeSpawn": 27
-        }
-    ]
+                    {   "type": 1, "timeSpawn": 3, "path": 1 },
+                    {   "type": 1, "timeSpawn": 6, "path": 1 },
+                    {   "type": 1, "timeSpawn": 8, "path": 1 },
+                    {   "type": 2, "timeSpawn": 10, "path": 0 },
+                    {   "type": 1, "timeSpawn": 11,  "path": 1 },
+                    {   "type": 1, "timeSpawn": 14,  "path": 1 },
+                    {   "type": 2, "timeSpawn": 18,  "path": 0 },
+                    {   "type": 1, "timeSpawn": 20,  "path": 1 },
+                    {   "type": 2, "timeSpawn": 21,  "path": 0 },
+                    {   "type": 2, "timeSpawn": 25,  "path": 0 },
+                    {   "type": 2, "timeSpawn": 30,  "path": 0 },
+                    {   "type": 3, "timeSpawn": 32,  "path": 0 },
+                    {   "type": 1, "timeSpawn": 40,  "path": 1 },
+                    {   "type": 2, "timeSpawn": 48,  "path": 1 },
+                    {   "type": 3, "timeSpawn": 50,  "path": 1 }
+                ]
 }
