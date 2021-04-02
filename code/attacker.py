@@ -87,10 +87,10 @@ class Dragon(Attacker):
         self._dragonTypeId = typeId
 
     def getPath(self):
-        return self._path
+        return self._movingPath
     
-    def setPath(self, path):
-        self._path = path
+    def setPath(self, movingPath):
+        self._movingPath = movingPath
     
     def getAbsoluteVelocity(self):
         return self._absoluteVelocity
