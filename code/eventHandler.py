@@ -1,4 +1,6 @@
 from code.attacker import Warrior
+from code import constants
+import arcade
 import math
 class EventHandler:
     def __init__(self):
@@ -11,7 +13,10 @@ class EventHandler:
             if (not self._warriorSelected == None):
                 self._warriorSelected.setBeingSelected(True)
                 stage.addWarrior(self._warriorSelected)
-            self._selectingMode = False
+                self._selectingMode = False
+            else:
+                self._selectingMode = True
+
 
     def handleWarriorPlacement(self, tiles, hud, mouse_x, mouse_y):
         if (not self._warriorSelected == None):
@@ -63,3 +68,23 @@ class EventHandler:
                     dragon.takeDamage(1)
                     stage.removeProjectile(projectile)
                     pass
+
+    def handleDragonsMovement(self, stage): #dragonSprites, tileSprites):
+        dragonSprites = stage.getDragonSprites()
+        tileSprites = stage.getTileSprites()
+        for dragon in dragonSprites:
+                currentDestTile = tileSprites[dragon.getCurrentDestTileIndex()]
+                if (arcade.get_distance_between_sprites(dragon, currentDestTile) < constants.REACH_THRESHOLD):
+                    dragon.popCurrentDestTileIndex()
+                    currentDestTile = tileSprites[dragon.getCurrentDestTileIndex()]
+                    dragon.setVelocityByDestTile(currentDestTile)
+    
+    def handleDragonReachesCastle(self, stage):
+        dragonSprites = stage.getDragonSprites()
+        castleTile = stage.getCastleTile()
+        for dragon in dragonSprites:
+            distance = arcade.get_distance_between_sprites(dragon, castleTile)
+            if (distance < constants.REACH_THRESHOLD):
+
+                stage.damageCastle(dragon.getAtk())
+                stage.removeDragon(dragon)

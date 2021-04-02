@@ -30,6 +30,8 @@ class DragonGame:
 
     def update(self):
         self._stage.getAllSprites().update()
+        self._eventHandler.handleDragonsMovement(self._stage)
+        self._eventHandler.handleDragonReachesCastle(self._stage)
 
     def draw(self):
         self._stage.getAllSprites().draw()
