@@ -85,6 +85,5 @@ class EventHandler:
         for dragon in dragonSprites:
             distance = arcade.get_distance_between_sprites(dragon, castleTile)
             if (distance < constants.REACH_THRESHOLD):
-
                 stage.damageCastle(dragon.getAtk())
                 stage.removeDragon(dragon)
