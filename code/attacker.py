@@ -102,7 +102,7 @@ class Dragon(Attacker):
         return self._movingPath[self._currentPathIndex]
 
     def popCurrentDestTileIndex(self):
-        if (self._currentPathIndex != len(self._movingPath) - 1):
+        if (self._currentPathIndex < len(self._movingPath) - 1):
             self._currentPathIndex += 1
 
     def setVelocityByDestTile(self, tile):
