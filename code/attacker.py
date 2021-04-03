@@ -5,15 +5,31 @@ class Attacker(arcade.Sprite):
         self._atk = 1.0
         self._attackRange = 0.0
         self._isAlive = bool
+        self._cooldown = 0.0
+        self._currentCooldown = 0.0
 
         super().__init__(path, scaling)
 
 #Damage function takes health and applies the damage to it
     def takeDamage(damage):
         self._health = self._health - damage
-    
-    def attack():
-        pass
+
+    def attack(self, attackList):
+        if self._currentCooldown <= 0 and attackList != []:
+            index = random.randint(0,len(attackList))
+            super().angle = math.sin(attackList[index].center_x - self.center_x / attackList[index].center_y - self.center_y)
+            projectile = Projectile("images/projectile.png",1)
+            projectile.angle = angle
+            projectile.change_x(math.cos(angle) * speed)
+            projectile.change_y(math.sin(angle) * speed)
+            self._currentCooldown = self._cooldown
+            return projectile
+        else:
+            self._currentCooldown -= 0.0166666
+            return None
+
+    def setCooldown(self, amount):
+        self._cooldown = amount
 
     def getHealth(self):
         return self._health
