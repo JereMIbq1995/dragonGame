@@ -1,0 +1,35 @@
+{
+    "width": 9,
+    "height": 6,
+    "lairIndex": 7,
+    "castleIndex": 1,
+    "warriors": [1,2,3],
+    "castleHealth": 5,
+    "boardArray": [0, 3, 0, 0, 0, 0, 0, 1, 0,
+                   2, 2, 0, 0, 0, 0, 0, 2, 0,
+                   2, 0, 0, 2, 2, 2, 0, 2, 0,
+                   2, 2, 0, 2, 0, 2, 0, 2, 0,
+                   0, 2, 0, 2, 0, 2, 2, 2, 0,
+                   0, 2, 2, 2, 0, 0, 0, 0, 0],
+    "paths": [
+                [16, 25, 34, 43, 42, 41, 32, 23, 22, 21, 30, 39, 48, 47, 46, 37, 28, 27, 18, 9, 10, 1 ],
+                [16, 25, 34, 1]
+            ],
+    "dragonsList": [
+                    {   "type": 1, "timeSpawn": 3, "path": 1, "absoluteVelocity": 2},
+                    {   "type": 1, "timeSpawn": 6, "path": 1, "absoluteVelocity": 2},
+                    {   "type": 1, "timeSpawn": 8, "path": 1, "absoluteVelocity": 2},
+                    {   "type": 2, "timeSpawn": 10, "path": 0, "absoluteVelocity": 1.5},
+                    {   "type": 1, "timeSpawn": 11,  "path": 1, "absoluteVelocity": 2},
+                    {   "type": 1, "timeSpawn": 14,  "path": 1, "absoluteVelocity": 2},
+                    {   "type": 2, "timeSpawn": 18,  "path": 0, "absoluteVelocity": 1.5},
+                    {   "type": 1, "timeSpawn": 20,  "path": 1, "absoluteVelocity": 2},
+                    {   "type": 2, "timeSpawn": 21,  "path": 0, "absoluteVelocity": 1.5},
+                    {   "type": 2, "timeSpawn": 25,  "path": 0, "absoluteVelocity": 2},
+                    {   "type": 2, "timeSpawn": 30,  "path": 0, "absoluteVelocity": 1.5},
+                    {   "type": 3, "timeSpawn": 32,  "path": 0, "absoluteVelocity": 0.7},
+                    {   "type": 1, "timeSpawn": 40,  "path": 1, "absoluteVelocity": 2},
+                    {   "type": 2, "timeSpawn": 48,  "path": 1, "absoluteVelocity": 1.5},
+                    {   "type": 3, "timeSpawn": 50,  "path": 1, "absoluteVelocity": 0.7}
+                ]
+}
