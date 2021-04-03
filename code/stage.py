@@ -3,21 +3,35 @@ import json
 from code import constants
 from code.tile import Tile
 from code.attacker import Warrior
+from code.dragonSpawner import DragonSpawner
 
 class Stage:
     def __init__(self, jsonPath):
         self._jsonPath = jsonPath
+        self._stageData = json.load(open(jsonPath))
 
+        # castle health:
+        self._castleHealth = self._stageData["castleHealth"]
+
+        # tiles related:
         self._tiles = arcade.SpriteList()
+        self._dragonLairIndex = self._stageData["lairIndex"]
+        self._castleIndex = self._stageData["castleIndex"]
+
+        # dragons related:
         self._enemies = arcade.SpriteList()
+
+        # warriors related:
         self._warriors = arcade.SpriteList()
+
+        # projectiles:
         self._projectiles = arcade.SpriteList()
+
+        # All sprites:
         self._allSprites = arcade.SpriteList()
 
         self._warriorTypes = []
-        self._dragonTypes = []
-
-        self._stageData = json.load(open(jsonPath))
+        self._dragonsList = []
 
         self._setUp()
     
@@ -61,15 +75,31 @@ class Stage:
         projectile.remove_from_sprite_lists()
 
     def getCastleHealth(self):
-        return self._stageData["castleHealth"]
+        return self._castleHealth
+    
+    def damageCastle(self, damage):
+        self._castleHealth -= damage
+    
+    def getDragonLairTile(self):
+        return self._tiles[self._dragonLairIndex]
+    
+    def getCastleTile(self):
+        return self._tiles[self._castleIndex]
     
     def _setUp(self):
         self._setUpTiles(100, constants.SCREEN_HEIGHT - 100)
         self._setUpWarriors()
         self._setUpDragons()
+        spawnLocation = (self._tiles[self._dragonLairIndex].center_x, self._tiles[self._dragonLairIndex].center_y)
+        dragonPaths = self._stageData["paths"]
+
+        self._dragonSpawner = DragonSpawner(self._dragonsList, dragonPaths, self, spawnLocation)
+
+    def startSpawningDragon(self):
+        self._dragonSpawner.startSpawning()
 
     def _setUpDragons(self):
-        self._dragonTypes = self._stageData["enemyList"]
+        self._dragonsList = self._stageData["dragonsList"]
     
     def _setUpWarriors(self):
         self._warriorTypes = self._stageData["warriors"]
