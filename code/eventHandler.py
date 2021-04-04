@@ -68,6 +68,8 @@ class EventHandler:
                 if projectile.collides_with_sprite(dragon):
                     dragon.takeDamage(1)
                     stage.removeProjectile(projectile)
+                    if dragon.getHealth() <= 0:
+                        dragon.die()
                     pass
 
     def handleDragonsMovement(self, stage): #dragonSprites, tileSprites):

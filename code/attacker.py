@@ -72,6 +72,9 @@ class Attacker(arcade.Sprite):
     def setVelocity(self, x, y):
         super()._set_change_x(x)
         super()._set_change_y(y)
+    
+    def die(self):
+        super().remove_from_sprite_lists()
 
 class Warrior(Attacker):
     def __init__(self, typeId, beingSelected, scaling):
