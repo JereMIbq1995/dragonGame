@@ -1,7 +1,9 @@
 import arcade
+from code import constants
 class Attacker(arcade.Sprite):
     def __init__(self, path, scaling):
-        self._health = 0.0
+        self._maxHealth = 5
+        self._health = 5
         self._atk = 1.0
         self._attackRange = 0.0
         self._isAlive = bool
@@ -67,6 +69,11 @@ class Warrior(Attacker):
     
     def setPlacedOnBoard(self, placedOnBoard):
         self._placedOnBoard = placedOnBoard
+    
+    def draw_health_bar(self):
+        if self._health > 0:
+            width = (self._health / self._maxHealth) * super().width
+            arcade.draw_rectangle_filled(super().center_x, super().bottom - 3, width, constants.HEALTH_BAR_HEIGHT, arcade.color.GREEN)
 
 """
     Test dragon class for the Dragon Spawner
@@ -111,3 +118,8 @@ class Dragon(Attacker):
         change_x = scaler * ( tile.center_x - self.center_x )
         change_y = scaler * ( tile.center_y - self.center_y )
         super().setVelocity(change_x, change_y)
+
+    def draw_health_bar(self):
+        if self._health > 0:
+            width = (self._health / self._maxHealth) * super().width
+            arcade.draw_rectangle_filled(super().center_x, super().bottom - 3, width, constants.HEALTH_BAR_HEIGHT, arcade.color.RED)
