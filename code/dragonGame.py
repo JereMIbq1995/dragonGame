@@ -17,6 +17,7 @@ class DragonGame:
     def handleMouseMotion(self, mouse_x, mouse_y, dx, dy):
         self._eventHandler.handleHighlightingSprites(self._stage.getTileSprites(), mouse_x, mouse_y)
         self._eventHandler.handleStickingWarriorToMouse(mouse_x, mouse_y)
+        self._eventHandler.handleShowingWarriorRange(self._stage.getWarriorSprites(), mouse_x, mouse_y)
     
     def handleMousePress(self, mouse_x, mouse_y, button, modifiers):
         selectingMode = self._eventHandler.getSelectingMode()
@@ -38,8 +39,9 @@ class DragonGame:
     def draw(self):
         self._stage.getAllSprites().draw()
         for dragon in self._stage.getDragonSprites():
-            dragon.draw_health_bar()
+            dragon.drawHealthBar()
         for warrior in self._stage.getWarriorSprites():
-            warrior.draw_health_bar()
+            warrior.drawHealthBar()
+            warrior.drawRange()
 
         self._hud.draw(self._stage.getCastleHealth())

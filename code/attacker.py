@@ -81,6 +81,7 @@ class Warrior(Attacker):
         self._warriorTypeId = typeId
         self._beingSelected = beingSelected
         self._placedOnBoard = False
+        self._showRange = False
         super().__init__(f"images/warriors/{typeId}/0.png", scaling)
 
     def getWarriorTypeId(self):
@@ -101,10 +102,17 @@ class Warrior(Attacker):
     def setPlacedOnBoard(self, placedOnBoard):
         self._placedOnBoard = placedOnBoard
     
-    def draw_health_bar(self):
+    def drawRange(self):
+        if (self._showRange):
+            arcade.draw_circle_outline(self.center_x, self.center_y, super().getAttackRange(), arcade.color.BLACK)
+
+    def drawHealthBar(self):
         if self._health > 0:
             width = (self._health / self._maxHealth) * constants.HEALTH_BAR_WIDTH
             arcade.draw_rectangle_filled(super().center_x, super().bottom - 3, width, constants.HEALTH_BAR_HEIGHT, arcade.color.GREEN)
+
+    def showRange(self, show):
+        self._showRange = show
 
 """
     Test dragon class for the Dragon Spawner
@@ -150,7 +158,7 @@ class Dragon(Attacker):
         change_y = scaler * ( tile.center_y - self.center_y )
         super().setVelocity(change_x, change_y)
 
-    def draw_health_bar(self):
+    def drawHealthBar(self):
         if self._health > 0:
             width = (self._health / self._maxHealth) * constants.HEALTH_BAR_WIDTH
             arcade.draw_rectangle_filled(super().center_x, super().bottom - 3, width, constants.HEALTH_BAR_HEIGHT, arcade.color.RED)

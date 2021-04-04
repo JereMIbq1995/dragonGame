@@ -42,6 +42,13 @@ class EventHandler:
                 sprite.highlightedMode()
             else:
                 sprite.normalMode()
+    
+    def handleShowingWarriorRange(self, warriors, mouse_x, mouse_y):
+        for warrior in warriors:
+            if warrior.collides_with_point((mouse_x, mouse_y)):
+                warrior.showRange(True)
+            else:
+                warrior.showRange(False)
 
     def handleStickingWarriorToMouse(self, mouse_x, mouse_y):
         if (not self._warriorSelected == None):
