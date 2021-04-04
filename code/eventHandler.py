@@ -57,7 +57,7 @@ class EventHandler:
             for dragon in stage.getDragonSprites():
                 if math.sqrt(abs(abs(warrior.center_x - dragon.center_x) * abs(warrior.center_x - dragon.center_x) + abs(warrior.center_y - dragon.center_y) * abs(warrior.center_y - dragon.center_y))) < warrior.getAttackRange():
                     attackList.append(dragon)
-                    print("Added 1 to attack list")
+                    # print("Added 1 to attack list")
             projectile = warrior.attack(attackList)
             if projectile != None:
                 stage.addProjectile(projectile)

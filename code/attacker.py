@@ -25,11 +25,11 @@ class Attacker(arcade.Sprite):
             index = 0
             self.radians = math.pi / 2 - math.atan((attackList[index].center_x - self.center_x) / (attackList[index].center_y - self.center_y))
             if attackList[index].center_y < self.center_y:
-                print(f"Before: {self.radians}")
+                # print(f"Before: {self.radians}")
                 self.radians = (math.pi / 2 - self.radians + math.pi / 2) * -1
-                print(f"After: {self.radians}")
+                # print(f"After: {self.radians}")
             
-            print(self.radians)
+            # print(self.radians)
             if self._currentCooldown <= 0:
                 projectile = arcade.Sprite("images/projectile.png",1)
                 projectile.angle = self.angle
@@ -103,7 +103,7 @@ class Warrior(Attacker):
     
     def draw_health_bar(self):
         if self._health > 0:
-            width = (self._health / self._maxHealth) * super().width
+            width = (self._health / self._maxHealth) * constants.HEALTH_BAR_WIDTH
             arcade.draw_rectangle_filled(super().center_x, super().bottom - 3, width, constants.HEALTH_BAR_HEIGHT, arcade.color.GREEN)
 
 """
@@ -152,5 +152,5 @@ class Dragon(Attacker):
 
     def draw_health_bar(self):
         if self._health > 0:
-            width = (self._health / self._maxHealth) * super().width
+            width = (self._health / self._maxHealth) * constants.HEALTH_BAR_WIDTH
             arcade.draw_rectangle_filled(super().center_x, super().bottom - 3, width, constants.HEALTH_BAR_HEIGHT, arcade.color.RED)
