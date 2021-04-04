@@ -1,21 +1,51 @@
 import arcade
+import random
+import math
 from code import constants
 class Attacker(arcade.Sprite):
     def __init__(self, path, scaling):
         self._maxHealth = 5
         self._health = 5
         self._atk = 1.0
-        self._attackRange = 0.0
+        self._attackRange = 100
         self._isAlive = bool
+        self._cooldown = 0.25
+        self._currentCooldown = 0.0
+        self._speed = 3
 
         super().__init__(path, scaling)
 
 #Damage function takes health and applies the damage to it
-    def takeDamage(damage):
+    def takeDamage(self,damage):
         self._health = self._health - damage
-    
-    def attack():
-        pass
+
+    def attack(self, attackList):
+        if attackList != []:
+            index = random.randint(0,len(attackList) - 1)
+            index = 0
+            self.radians = math.pi / 2 - math.atan((attackList[index].center_x - self.center_x) / (attackList[index].center_y - self.center_y))
+            if attackList[index].center_y < self.center_y:
+                print(f"Before: {self.radians}")
+                self.radians = (math.pi / 2 - self.radians + math.pi / 2) * -1
+                print(f"After: {self.radians}")
+            
+            print(self.radians)
+            if self._currentCooldown <= 0:
+                projectile = arcade.Sprite("images/projectile.png",1)
+                projectile.angle = self.angle
+                projectile.center_x = self.center_x
+                projectile.center_y = self.center_y
+                projectile.change_x = math.cos(self.radians) * self._speed
+                projectile.change_y = math.sin(self.radians) * self._speed
+                self._currentCooldown = self._cooldown
+                return projectile
+            else:
+                self._currentCooldown -= 0.0166666
+                return None
+        return None
+
+    def setCooldown(self, amount):
+        self._cooldown = amount
 
     def getHealth(self):
         return self._health
@@ -23,13 +53,11 @@ class Attacker(arcade.Sprite):
     def setHealth(self, health):
         self._health = health
 
-
     def getAtk(self):
         return self._atk
 
     def setAtk(self, atk):
         self._atk = atk
-
 
     def getAttackRange(self):
         return self._attackRange
