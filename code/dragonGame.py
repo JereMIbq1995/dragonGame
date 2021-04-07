@@ -38,10 +38,12 @@ class DragonGame:
 
     def draw(self):
         self._stage.getAllSprites().draw()
+
         for dragon in self._stage.getDragonSprites():
             dragon.drawHealthBar()
+
         for warrior in self._stage.getWarriorSprites():
             warrior.drawHealthBar()
             warrior.drawRange()
 
-        self._hud.draw(self._stage.getCastleHealth())
+        self._hud.draw(self._stage.getCastleHealth(), self._stage.getNumDragonsDead(), self._stage.getNumDragons())
