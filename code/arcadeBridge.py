@@ -6,7 +6,7 @@ class ArcadeBridge(arcade.Window):
 
     def __init__(self):
         super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
-        arcade.set_background_color(arcade.color.WHITE)
+        arcade.set_background_color(arcade.color.AERO_BLUE)
         #Declare the game:
         self._dragonGame = DragonGame()
 
