@@ -26,6 +26,7 @@ class EventHandler:
                     self._warriorSelected.center_x = tile.center_x
                     self._warriorSelected.center_y = tile.center_y
                     tile.setOccupied(True)
+                    self._warriorSelected.setPlacedOnBoard(True)
                     self._warriorSelected.setBeingSelected(False)
                     warriorSet = True
                     break
@@ -65,7 +66,7 @@ class EventHandler:
                 if math.sqrt(abs(abs(warrior.center_x - dragon.center_x) * abs(warrior.center_x - dragon.center_x) + abs(warrior.center_y - dragon.center_y) * abs(warrior.center_y - dragon.center_y))) < warrior.getAttackRange():
                     attackList.append(dragon)
                     # print("Added 1 to attack list")
-            projectile = warrior.attack(attackList)
+            projectile = None if not warrior.getPlacedOnBoard() else warrior.attack(attackList)
             if projectile != None:
                 stage.addProjectile(projectile)
 
