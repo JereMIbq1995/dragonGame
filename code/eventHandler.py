@@ -22,7 +22,7 @@ class EventHandler:
         if (not self._warriorSelected == None):
             warriorSet = False
             for tile in tiles:
-                if tile.collides_with_point((mouse_x, mouse_y)) and not tile.getOccupied():
+                if tile.collides_with_point((mouse_x, mouse_y)) and not tile.getOccupied() and tile.getTypeId() == 0:
                     self._warriorSelected.center_x = tile.center_x
                     self._warriorSelected.center_y = tile.center_y
                     tile.setOccupied(True)

@@ -24,6 +24,8 @@ class DragonSpawner:
             newDragon = Dragon(typeId, absoluteVelocity, movingPath, 0.4)
             newDragon.center_x = self._spawnLocationX
             newDragon.center_y = self._spawnLocationY
+            newDragon.setHealth(self._spawnList[0]["health"])
+            newDragon.setMaxHealth(self._spawnList[0]["health"])
             newDragon.setVelocityByDestTile(currentDestTile)
             
             self._stage.addDragon(newDragon)

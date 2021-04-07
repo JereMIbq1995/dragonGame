@@ -1,0 +1,36 @@
+{
+    "width": 9,
+    "height": 6,
+    "lairIndex": 45,
+    "castleIndex": 17,
+    "warriors": [1,2,3,2],
+    "castleHealth": 5,
+    "boardArray": [0, 0, 0, 0, 0, 0, 0, 0, 0,
+                   2, 2, 2, 2, 2, 2, 2, 2, 3,
+                   2, 0, 0, 0, 2, 0, 0, 0, 2,
+                   2, 0, 0, 0, 2, 0, 0, 0, 2,
+                   2, 2, 2, 2, 2, 2, 2, 2, 2,
+                   1, 0, 0, 0, 0, 0, 0, 0, 0],
+    "paths": [
+                [36,27,18,9,10,11,12,13,22,31,40,41,42,43,44,35,26,17],
+                [36,27,18,9,10,11,12,13,14,15,16,17],
+                [36,37,38,39,40,31,22,13,14,15,16,17]
+            ],
+    "dragonsList": [
+                    {   "type": 1, "timeSpawn": 3, "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 1, "timeSpawn": 6, "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 1, "timeSpawn": 8, "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 2, "timeSpawn": 10, "path": 2, "absoluteVelocity": 1, "health": 12},
+                    {   "type": 1, "timeSpawn": 11,  "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 1, "timeSpawn": 14,  "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 2, "timeSpawn": 18,  "path": 2, "absoluteVelocity": 1, "health": 12},
+                    {   "type": 1, "timeSpawn": 20,  "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 2, "timeSpawn": 21,  "path": 2, "absoluteVelocity": 1, "health": 12},
+                    {   "type": 2, "timeSpawn": 25,  "path": 2, "absoluteVelocity": 2, "health": 12},
+                    {   "type": 2, "timeSpawn": 30,  "path": 2, "absoluteVelocity": 1, "health": 12},
+                    {   "type": 3, "timeSpawn": 32,  "path": 0, "absoluteVelocity": 0.8, "health": 16},
+                    {   "type": 3, "timeSpawn": 40,  "path": 0, "absoluteVelocity": 0.8, "health": 16},
+                    {   "type": 3, "timeSpawn": 48,  "path": 0, "absoluteVelocity": 0.8, "health": 16},
+                    {   "type": 3, "timeSpawn": 50,  "path": 0, "absoluteVelocity": 0.8, "health": 16}
+                ]
+}

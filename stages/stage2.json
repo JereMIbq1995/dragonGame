@@ -16,20 +16,20 @@
                 [16, 25, 34, 1]
             ],
     "dragonsList": [
-                    {   "type": 1, "timeSpawn": 3, "path": 1, "absoluteVelocity": 2},
-                    {   "type": 1, "timeSpawn": 6, "path": 1, "absoluteVelocity": 2},
-                    {   "type": 1, "timeSpawn": 8, "path": 1, "absoluteVelocity": 2},
-                    {   "type": 2, "timeSpawn": 10, "path": 0, "absoluteVelocity": 1.5},
-                    {   "type": 1, "timeSpawn": 11,  "path": 1, "absoluteVelocity": 2},
-                    {   "type": 1, "timeSpawn": 14,  "path": 1, "absoluteVelocity": 2},
-                    {   "type": 2, "timeSpawn": 18,  "path": 0, "absoluteVelocity": 1.5},
-                    {   "type": 1, "timeSpawn": 20,  "path": 1, "absoluteVelocity": 2},
-                    {   "type": 2, "timeSpawn": 21,  "path": 0, "absoluteVelocity": 1.5},
-                    {   "type": 2, "timeSpawn": 25,  "path": 0, "absoluteVelocity": 2},
-                    {   "type": 2, "timeSpawn": 30,  "path": 0, "absoluteVelocity": 1.5},
-                    {   "type": 3, "timeSpawn": 32,  "path": 0, "absoluteVelocity": 0.7},
-                    {   "type": 1, "timeSpawn": 40,  "path": 1, "absoluteVelocity": 2},
-                    {   "type": 2, "timeSpawn": 48,  "path": 1, "absoluteVelocity": 1.5},
-                    {   "type": 3, "timeSpawn": 50,  "path": 1, "absoluteVelocity": 0.7}
+                    {   "type": 1, "timeSpawn": 5, "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 1, "timeSpawn": 8, "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 1, "timeSpawn": 12, "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 2, "timeSpawn": 14, "path": 0, "absoluteVelocity": 1.5, "health": 12},
+                    {   "type": 1, "timeSpawn": 17,  "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 1, "timeSpawn": 20,  "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 2, "timeSpawn": 25,  "path": 0, "absoluteVelocity": 1.5, "health": 12},
+                    {   "type": 1, "timeSpawn": 28,  "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 2, "timeSpawn": 32,  "path": 0, "absoluteVelocity": 1.5, "health": 12},
+                    {   "type": 2, "timeSpawn": 35,  "path": 0, "absoluteVelocity": 2, "health": 12},
+                    {   "type": 2, "timeSpawn": 38,  "path": 0, "absoluteVelocity": 1.5, "health": 12},
+                    {   "type": 3, "timeSpawn": 41,  "path": 0, "absoluteVelocity": 0.7, "health": 16},
+                    {   "type": 1, "timeSpawn": 44,  "path": 1, "absoluteVelocity": 2, "health": 8},
+                    {   "type": 2, "timeSpawn": 46,  "path": 1, "absoluteVelocity": 1.5, "health": 12},
+                    {   "type": 3, "timeSpawn": 48,  "path": 1, "absoluteVelocity": 0.7, "health": 16}
                 ]
 }

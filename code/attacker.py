@@ -53,6 +53,12 @@ class Attacker(arcade.Sprite):
     def setHealth(self, health):
         self._health = health
 
+    def getMaxHealth(self):
+        return self._maxHealth
+    
+    def setMaxHealth(self, maxHealth):
+        self._maxHealth = maxHealth
+
     def getAtk(self):
         return self._atk
 
