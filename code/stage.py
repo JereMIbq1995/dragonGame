@@ -19,7 +19,9 @@ class Stage:
         self._castleIndex = self._stageData["castleIndex"]
 
         # dragons related:
-        self._enemies = arcade.SpriteList()
+        self._dragons = arcade.SpriteList()
+        self._numDragons = 0
+        self._numDragonsDead = 0
 
         # warriors related:
         self._warriors = arcade.SpriteList()
@@ -39,7 +41,7 @@ class Stage:
         return self._tiles
     
     def getDragonSprites(self):
-        return self._enemies
+        return self._dragons
     
     def getWarriorSprites(self):
         return self._warriors
@@ -61,7 +63,7 @@ class Stage:
         warrior.remove_from_sprite_lists()
 
     def addDragon(self,dragon):
-        self._enemies.append(dragon)
+        self._dragons.append(dragon)
         self._allSprites.append(dragon)
 
     def removeDragon(self,dragon):
@@ -85,6 +87,15 @@ class Stage:
     
     def getCastleTile(self):
         return self._tiles[self._castleIndex]
+
+    def getNumDragons(self):
+        return self._numDragons
+    
+    def getNumDragonsDead(self):
+        return self._numDragonsDead
+
+    def incrementDragonDead(self):
+        self._numDragonsDead += 1
     
     def _setUp(self):
         self._setUpTiles(100, constants.SCREEN_HEIGHT - 100)
@@ -100,6 +111,7 @@ class Stage:
 
     def _setUpDragons(self):
         self._dragonsList = self._stageData["dragonsList"]
+        self._numDragons = len(self._dragonsList)
     
     def _setUpWarriors(self):
         self._warriorTypes = self._stageData["warriors"]

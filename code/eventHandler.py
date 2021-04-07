@@ -76,7 +76,8 @@ class EventHandler:
                     dragon.takeDamage(1)
                     stage.removeProjectile(projectile)
                     if dragon.getHealth() <= 0:
-                        dragon.die()
+                        stage.removeDragon(dragon)
+                        stage.incrementDragonDead()
                     pass
 
     def handleDragonsMovement(self, stage): #dragonSprites, tileSprites):
@@ -97,3 +98,4 @@ class EventHandler:
             if (distance < constants.REACH_THRESHOLD):
                 stage.damageCastle(dragon.getAtk())
                 stage.removeDragon(dragon)
+                stage.incrementDragonDead()
